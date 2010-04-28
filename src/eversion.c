@@ -20,7 +20,7 @@ int i = 0;
 uschar *copyright = US"Copyright (c) University of Cambridge 2005";
 uschar today[20];
 
-version_string = malloc(strlen(copyright));
+version_string = malloc(strlen(copyright)+1);
 strcpy(version_string, copyright);
 strcpy(version_string, this_version);
 
