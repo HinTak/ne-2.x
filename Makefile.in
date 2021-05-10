@@ -1,0 +1,45 @@
+# Makefile.in for NE. The building work is done by a separate Makefile in
+# the src directory, which gets passed settings from here.
+
+mkinstalldirs = $(SHELL) mkinstalldirs
+
+# These variables get set up by the configure script.
+
+CC=@CC@
+CFLAGS=@CFLAGS@
+LFLAGS=@LFLAGS@
+
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+
+BINDIR=@prefix@/bin
+MANDIR=@prefix@/man
+
+LIB_TERMINAL=@LIB_TERMINAL@
+TERMCAP=@TERMCAP@
+VDISCARD=@VDISCARD@
+
+
+# BINDIR is the directory in which the command is installed.
+# MANDIR is the directory in which the man page is installed.
+
+build:; cd src; $(MAKE) \
+                CC="$(CC)" \
+                CFLAGS="$(CFLAGS) $(TERMCAP) $(VDISCARD)" \
+                LFLAGS="$(LFLAGS)" \
+                LIBS="$(LIB_TERMINAL)"
+
+clean:; cd src; $(MAKE) clean
+
+distclean:;     rm Makefile config.cache config.log config.status; \
+                cd src; $(MAKE) clean
+
+test:; cd testdist; RunTests
+
+install:        build
+		$(mkinstalldirs) $(DESTDIR)$(BINDIR)
+		$(mkinstalldirs) $(DESTDIR)$(MANDIR)
+		$(mkinstalldirs) $(DESTDIR)$(MANDIR)/man1
+		$(INSTALL) src/ne $(DESTDIR)$(BINDIR)/ne
+#		$(INSTALL_DATA) doc/ne.1 $(DESTDIR)$(MANDIR)/man1
+# End
