@@ -25,7 +25,7 @@
 
 HDRS = cmdhdr.h config.h ehdr.h keyhdr.h scomhdr.h shdr.h structs.h unixhdr.h
 
-OBJ = debug.o ecrash.o ecmdarg.o ecmdcomp.o ecmdsub.o ecompP.o ecutcopy.o \
+OBJ = debug.o ecrash.o ecmdarg.o ecmdcomp.o ecmdsub.o ecompR.o ematchR.o ecutcopy.o \
   edisplay.o eerror.o ee1.o ee2.o ee3.o ee4.o efile.o eglobals.o einit.o \
   ekey.o ekeysub.o eline.o ematch.o erdseqs.o escrnrdl.o \
   escrnsub.o estore.o rdargs.o scommon.o sunix.o sysunix.o eversion.o

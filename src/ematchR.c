@@ -661,7 +661,7 @@ strings found, nothing is inserted. The final argument is the address
 of a flag, which is set FALSE if wild strings are required and the
 first word of the Journal is -1, indicating that it overflowed. */
 
-linestr *cmd_ReChange(linestr *line, char *p, int len,
+linestr *cmd_ReChange(linestr *line, uschar *p, int len,
   BOOL hexflag, BOOL eflag, BOOL aflag, BOOL *aok)
 {
 int i, pp;
